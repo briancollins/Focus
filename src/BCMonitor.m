@@ -4,6 +4,9 @@
 
 @interface BCMonitor ()
 - (void)eventReceived:(CGEventRef)event ofType:(CGEventType)type;
+
+@property (nonatomic, strong) NSString *currentPath;
+@property (readonly) BCMonitorEventStream *eventStream;
 @end
 
 CGEventRef eventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef event, BCMonitor *monitor) {
@@ -12,7 +15,7 @@ CGEventRef eventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef eve
 }
 
 @implementation BCMonitor
-@synthesize eventStream, keysPerSecond;
+@synthesize keysPerSecond, totalKeystrokes, currentPath;
 
 - (id)init {
     if ((self = [super init])) {
@@ -56,10 +59,6 @@ CGEventRef eventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef eve
         return;
     }
     
-    if (!self.eventStream) {
-        self.eventStream = [[BCMonitorEventStream alloc] init];
-    }
-    
     NSRunningApplication *activeApplication = nil;
     for (NSRunningApplication *app in [[NSWorkspace sharedWorkspace] runningApplications]) {
         if (app.active) {
@@ -74,10 +73,11 @@ CGEventRef eventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef eve
         metaData = [[BCAppPlugin pluginForApplication:activeApplication.bundleIdentifier] metadata];
     }
     
-    
-    [self.eventStream recordKeyCount:keystrokes[0] 
-                         application:activeApplication.bundleIdentifier
-                            metadata:metaData];
+    self.totalKeystrokes += keystrokes[0];
+    [self.eventStream
+     recordKeyCount:keystrokes[0] 
+     application:activeApplication
+     metadata:metaData];
     keystrokes[0] = 0;
 }
 
@@ -96,5 +96,48 @@ CGEventRef eventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef eve
     CFRelease(runLoopSource), runLoopSource = NULL;
     CFRelease(tap), tap = NULL;
 }
+
+
+
+- (NSString *)pathForHourlySave:(NSDate *)date {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *folder = [@"~/Library/Application Support/Focus/" stringByExpandingTildeInPath];
+    
+    if (![fileManager fileExistsAtPath:folder]) {
+        [fileManager createDirectoryAtPath:folder withIntermediateDirectories:NO attributes:nil error:NULL];
+    }
+    NSDate *today = date;
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"MM-dd-yyyy hh.00.00"];    
+    NSString *fileName = [NSString stringWithFormat:@"%@.FocusEvents", [dateFormat stringFromDate:today]];
+    return [folder stringByAppendingPathComponent:fileName];
+}
+
+- (void)saveEventStream {
+    [eventStream writeToURL:[NSURL fileURLWithPath:self.currentPath] ofType:@"FocusEvents" error:NULL];
+}
+
+- (BCMonitorEventStream *)eventStream {
+    NSString *newPath = [self pathForHourlySave:[NSDate date]];
+    if ([self.currentPath isEqualToString:newPath]) {
+        return eventStream;
+    } 
+    
+    if (eventStream) {
+        [eventStream writeToURL:[NSURL fileURLWithPath:self.currentPath] ofType:@"FocusEvents" error:NULL];
+    }
+    
+    self.currentPath = newPath;
+    
+    eventStream =
+    [[BCMonitorEventStream alloc] initWithContentsOfURL:[NSURL fileURLWithPath:newPath] ofType:@"FocusEvents" error:NULL];
+    
+    if (!eventStream) {
+        eventStream = [[BCMonitorEventStream alloc] init];
+    }
+    
+    return eventStream;
+}
+
 
 @end

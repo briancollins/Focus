@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		3B91E4E11481E196002F5D7B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B91E4E01481E196002F5D7B /* Cocoa.framework */; };
 		3B91E5091481E21C002F5D7B /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 3B91E5001481E21C002F5D7B /* Credits.rtf */; };
-		3B91E50A1481E21C002F5D7B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B91E5011481E21C002F5D7B /* MainMenu.xib */; };
 		3B91E50B1481E21C002F5D7B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B91E5041481E21C002F5D7B /* main.m */; };
 		3B91E50C1481E21C002F5D7B /* BCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B91E5071481E21C002F5D7B /* BCAppDelegate.m */; };
 		3B91E50F1481E2A8002F5D7B /* BCMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B91E50E1481E2A8002F5D7B /* BCMonitor.m */; };
@@ -17,6 +16,7 @@
 		3B91E5171481F257002F5D7B /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B91E5161481F257002F5D7B /* ScriptingBridge.framework */; };
 		3B91E51B1481F2D6002F5D7B /* BCAppPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B91E51A1481F2D6002F5D7B /* BCAppPlugin.m */; };
 		3B91E51E1481F4CE002F5D7B /* BCChromePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B91E51D1481F4CE002F5D7B /* BCChromePlugin.m */; };
+		3B91E52C148212DB002F5D7B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B91E52B148212DB002F5D7B /* MainMenu.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +27,6 @@
 		3B91E4E51481E196002F5D7B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3B91E4FE1481E21C002F5D7B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B91E5001481E21C002F5D7B /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
-		3B91E5011481E21C002F5D7B /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		3B91E5041481E21C002F5D7B /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3B91E5051481E21C002F5D7B /* prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prefix.pch; sourceTree = "<group>"; };
 		3B91E5061481E21C002F5D7B /* BCAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCAppDelegate.h; sourceTree = "<group>"; };
@@ -42,6 +41,7 @@
 		3B91E51A1481F2D6002F5D7B /* BCAppPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCAppPlugin.m; sourceTree = "<group>"; };
 		3B91E51C1481F4CE002F5D7B /* BCChromePlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCChromePlugin.h; sourceTree = "<group>"; };
 		3B91E51D1481F4CE002F5D7B /* BCChromePlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCChromePlugin.m; sourceTree = "<group>"; };
+		3B91E52B148212DB002F5D7B /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,8 +107,8 @@
 		3B91E4FF1481E21C002F5D7B /* res */ = {
 			isa = PBXGroup;
 			children = (
+				3B91E52B148212DB002F5D7B /* MainMenu.xib */,
 				3B91E5001481E21C002F5D7B /* Credits.rtf */,
-				3B91E5011481E21C002F5D7B /* MainMenu.xib */,
 			);
 			path = res;
 			sourceTree = "<group>";
@@ -208,7 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B91E5091481E21C002F5D7B /* Credits.rtf in Resources */,
-				3B91E50A1481E21C002F5D7B /* MainMenu.xib in Resources */,
+				3B91E52C148212DB002F5D7B /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +319,7 @@
 				3B91E4FC1481E196002F5D7B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -11,10 +11,13 @@
     NSDate *lastActive;
     NSTimer *timer;
     BOOL isActive;
+    BCMonitorEventStream *eventStream;
 }
 
-@property (nonatomic, strong) BCMonitorEventStream *eventStream;
 @property (nonatomic) float keysPerSecond;
+@property (nonatomic) NSInteger totalKeystrokes;
+
+- (void)saveEventStream;
 
 @end
 

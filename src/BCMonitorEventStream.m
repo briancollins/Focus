@@ -2,10 +2,11 @@
 #define X_OR_NULL(x) x ? x : [NSNull null]
 
 @implementation BCMonitorEventStream
-@synthesize keyStrokes;
 
 - (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError **)outError {
-    return YES;
+    events = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    
+    return !!events;
 }
 
 - (id)init {
@@ -17,17 +18,15 @@
 }
 
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError {
-    NSString *error;
-    NSData *data = [NSPropertyListSerialization dataFromPropertyList:events format:NSPropertyListBinaryFormat_v1_0 errorDescription:&error];
-    return data;
+    return [NSKeyedArchiver archivedDataWithRootObject:events];
 }
 
-- (void)recordKeyCount:(NSInteger)keyCount application:(NSString *)bundleIdentifier metadata:(NSDictionary *)metadata {
-    self.keyStrokes += keyCount;
+- (void)recordKeyCount:(NSInteger)keyCount application:(NSRunningApplication *)application metadata:(NSDictionary *)metadata {
     [events addObject:
      [NSDictionary dictionaryWithObjectsAndKeys:
       X_OR_NULL([NSNumber numberWithInteger:keyCount]), @"keyCount",
-      X_OR_NULL(bundleIdentifier),                      @"application",
+      X_OR_NULL(application.bundleIdentifier),          @"application",
+      X_OR_NULL(application.localizedName),             @"displayName",
       X_OR_NULL(metadata),                              @"metadata", nil]];
 }
 
