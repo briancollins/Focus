@@ -2,6 +2,7 @@
 #import "BCMonitor.h"
 #import "BCAppPlugin.h"
 #import "BCChromePlugin.h"
+#import "BCMonitorEventStream.h"
 
 #define kBCStatusIconWidth 7.0f
 #define kBCStatusIconHeight 14.0f
@@ -10,20 +11,23 @@
 
 @interface BCAppDelegate ()
 @property (nonatomic, strong) BCMonitor *monitor;
+@property (nonatomic, strong) NSMenuItem *keyCountMenuItem;
 
 - (void)updateStatusItem;
 @end
 
 @implementation BCAppDelegate
 
-@synthesize window = _window, monitor = _monitor;
+@synthesize window = _window, monitor = _monitor, keyCountMenuItem;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     [[[BCChromePlugin alloc] init] registerPlugin];
     
     NSMenu *menu = [[NSMenu alloc] initWithTitle:@"hello"];
-    NSMenuItem *keyCount = [[NSMenuItem alloc] initWithTitle:@"foo" action:nil keyEquivalent:@"F"];
-    [menu addItem:keyCount];
+    
+    self.keyCountMenuItem = [[NSMenuItem alloc] init];
+    self.keyCountMenuItem.title = @"No keystrokes recorded yet";
+    [menu addItem:self.keyCountMenuItem];
     
     statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:kBCStatusIconWidth + 10.0f];
     statusItem.menu = menu;
@@ -68,6 +72,7 @@
 - (void)updateStatusItem {
     statusItem.image = [self statusImageWithColor:[NSColor blackColor]];
     statusItem.alternateImage = [self statusImageWithColor:[NSColor whiteColor]];
+    self.keyCountMenuItem.title = [NSString stringWithFormat:@"%d keys pressed", self.monitor.eventStream.keyStrokes];
 }
 
 - (void)dealloc {
