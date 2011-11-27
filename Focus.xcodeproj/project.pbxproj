@@ -1,0 +1,292 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3B91E4E11481E196002F5D7B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B91E4E01481E196002F5D7B /* Cocoa.framework */; };
+		3B91E5091481E21C002F5D7B /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 3B91E5001481E21C002F5D7B /* Credits.rtf */; };
+		3B91E50A1481E21C002F5D7B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B91E5011481E21C002F5D7B /* MainMenu.xib */; };
+		3B91E50B1481E21C002F5D7B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B91E5041481E21C002F5D7B /* main.m */; };
+		3B91E50C1481E21C002F5D7B /* BCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B91E5071481E21C002F5D7B /* BCAppDelegate.m */; };
+		3B91E50F1481E2A8002F5D7B /* BCMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B91E50E1481E2A8002F5D7B /* BCMonitor.m */; };
+		3B91E5121481ED10002F5D7B /* BCMonitorEventStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B91E5111481ED10002F5D7B /* BCMonitorEventStream.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3B91E4DC1481E196002F5D7B /* Focus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Focus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B91E4E01481E196002F5D7B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		3B91E4E31481E196002F5D7B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		3B91E4E41481E196002F5D7B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		3B91E4E51481E196002F5D7B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3B91E4FE1481E21C002F5D7B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3B91E5001481E21C002F5D7B /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
+		3B91E5011481E21C002F5D7B /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		3B91E5041481E21C002F5D7B /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3B91E5051481E21C002F5D7B /* prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prefix.pch; sourceTree = "<group>"; };
+		3B91E5061481E21C002F5D7B /* BCAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCAppDelegate.h; sourceTree = "<group>"; };
+		3B91E5071481E21C002F5D7B /* BCAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCAppDelegate.m; sourceTree = "<group>"; };
+		3B91E50D1481E2A8002F5D7B /* BCMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCMonitor.h; sourceTree = "<group>"; };
+		3B91E50E1481E2A8002F5D7B /* BCMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCMonitor.m; sourceTree = "<group>"; };
+		3B91E5101481ED10002F5D7B /* BCMonitorEventStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCMonitorEventStream.h; sourceTree = "<group>"; };
+		3B91E5111481ED10002F5D7B /* BCMonitorEventStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCMonitorEventStream.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3B91E4D91481E196002F5D7B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B91E4E11481E196002F5D7B /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3B91E4D11481E196002F5D7B = {
+			isa = PBXGroup;
+			children = (
+				3B91E5021481E21C002F5D7B /* src */,
+				3B91E4FF1481E21C002F5D7B /* res */,
+				3B91E4FD1481E21C002F5D7B /* plist */,
+				3B91E4DF1481E196002F5D7B /* Frameworks */,
+				3B91E4DD1481E196002F5D7B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3B91E4DD1481E196002F5D7B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3B91E4DC1481E196002F5D7B /* Focus.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3B91E4DF1481E196002F5D7B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3B91E4E01481E196002F5D7B /* Cocoa.framework */,
+				3B91E4E21481E196002F5D7B /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3B91E4E21481E196002F5D7B /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3B91E4E31481E196002F5D7B /* AppKit.framework */,
+				3B91E4E41481E196002F5D7B /* CoreData.framework */,
+				3B91E4E51481E196002F5D7B /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		3B91E4FD1481E21C002F5D7B /* plist */ = {
+			isa = PBXGroup;
+			children = (
+				3B91E4FE1481E21C002F5D7B /* Info.plist */,
+			);
+			path = plist;
+			sourceTree = "<group>";
+		};
+		3B91E4FF1481E21C002F5D7B /* res */ = {
+			isa = PBXGroup;
+			children = (
+				3B91E5001481E21C002F5D7B /* Credits.rtf */,
+				3B91E5011481E21C002F5D7B /* MainMenu.xib */,
+			);
+			path = res;
+			sourceTree = "<group>";
+		};
+		3B91E5021481E21C002F5D7B /* src */ = {
+			isa = PBXGroup;
+			children = (
+				3B91E5031481E21C002F5D7B /* base */,
+				3B91E5061481E21C002F5D7B /* BCAppDelegate.h */,
+				3B91E5071481E21C002F5D7B /* BCAppDelegate.m */,
+				3B91E50D1481E2A8002F5D7B /* BCMonitor.h */,
+				3B91E50E1481E2A8002F5D7B /* BCMonitor.m */,
+				3B91E5101481ED10002F5D7B /* BCMonitorEventStream.h */,
+				3B91E5111481ED10002F5D7B /* BCMonitorEventStream.m */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		3B91E5031481E21C002F5D7B /* base */ = {
+			isa = PBXGroup;
+			children = (
+				3B91E5041481E21C002F5D7B /* main.m */,
+				3B91E5051481E21C002F5D7B /* prefix.pch */,
+			);
+			path = base;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3B91E4DB1481E196002F5D7B /* Focus */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B91E4FA1481E196002F5D7B /* Build configuration list for PBXNativeTarget "Focus" */;
+			buildPhases = (
+				3B91E4D81481E196002F5D7B /* Sources */,
+				3B91E4D91481E196002F5D7B /* Frameworks */,
+				3B91E4DA1481E196002F5D7B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Focus;
+			productName = Focus;
+			productReference = 3B91E4DC1481E196002F5D7B /* Focus.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3B91E4D31481E196002F5D7B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 3B91E4D61481E196002F5D7B /* Build configuration list for PBXProject "Focus" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 3B91E4D11481E196002F5D7B;
+			productRefGroup = 3B91E4DD1481E196002F5D7B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3B91E4DB1481E196002F5D7B /* Focus */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3B91E4DA1481E196002F5D7B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B91E5091481E21C002F5D7B /* Credits.rtf in Resources */,
+				3B91E50A1481E21C002F5D7B /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3B91E4D81481E196002F5D7B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B91E50B1481E21C002F5D7B /* main.m in Sources */,
+				3B91E50C1481E21C002F5D7B /* BCAppDelegate.m in Sources */,
+				3B91E50F1481E2A8002F5D7B /* BCMonitor.m in Sources */,
+				3B91E5121481ED10002F5D7B /* BCMonitorEventStream.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		3B91E4F81481E196002F5D7B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		3B91E4F91481E196002F5D7B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		3B91E4FB1481E196002F5D7B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = src/base/prefix.pch;
+				INFOPLIST_FILE = plist/Info.plist;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		3B91E4FC1481E196002F5D7B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = src/base/prefix.pch;
+				INFOPLIST_FILE = plist/Info.plist;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3B91E4D61481E196002F5D7B /* Build configuration list for PBXProject "Focus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B91E4F81481E196002F5D7B /* Debug */,
+				3B91E4F91481E196002F5D7B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3B91E4FA1481E196002F5D7B /* Build configuration list for PBXNativeTarget "Focus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B91E4FB1481E196002F5D7B /* Debug */,
+				3B91E4FC1481E196002F5D7B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3B91E4D31481E196002F5D7B /* Project object */;
+}
