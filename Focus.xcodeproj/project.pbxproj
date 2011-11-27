@@ -14,6 +14,9 @@
 		3B91E50C1481E21C002F5D7B /* BCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B91E5071481E21C002F5D7B /* BCAppDelegate.m */; };
 		3B91E50F1481E2A8002F5D7B /* BCMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B91E50E1481E2A8002F5D7B /* BCMonitor.m */; };
 		3B91E5121481ED10002F5D7B /* BCMonitorEventStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B91E5111481ED10002F5D7B /* BCMonitorEventStream.m */; };
+		3B91E5171481F257002F5D7B /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B91E5161481F257002F5D7B /* ScriptingBridge.framework */; };
+		3B91E51B1481F2D6002F5D7B /* BCAppPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B91E51A1481F2D6002F5D7B /* BCAppPlugin.m */; };
+		3B91E51E1481F4CE002F5D7B /* BCChromePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B91E51D1481F4CE002F5D7B /* BCChromePlugin.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +36,12 @@
 		3B91E50E1481E2A8002F5D7B /* BCMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCMonitor.m; sourceTree = "<group>"; };
 		3B91E5101481ED10002F5D7B /* BCMonitorEventStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCMonitorEventStream.h; sourceTree = "<group>"; };
 		3B91E5111481ED10002F5D7B /* BCMonitorEventStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCMonitorEventStream.m; sourceTree = "<group>"; };
+		3B91E5161481F257002F5D7B /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
+		3B91E5181481F29A002F5D7B /* SBChrome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBChrome.h; sourceTree = "<group>"; };
+		3B91E5191481F2D6002F5D7B /* BCAppPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCAppPlugin.h; sourceTree = "<group>"; };
+		3B91E51A1481F2D6002F5D7B /* BCAppPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCAppPlugin.m; sourceTree = "<group>"; };
+		3B91E51C1481F4CE002F5D7B /* BCChromePlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCChromePlugin.h; sourceTree = "<group>"; };
+		3B91E51D1481F4CE002F5D7B /* BCChromePlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCChromePlugin.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B91E5171481F257002F5D7B /* ScriptingBridge.framework in Frameworks */,
 				3B91E4E11481E196002F5D7B /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -69,6 +79,7 @@
 		3B91E4DF1481E196002F5D7B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3B91E5161481F257002F5D7B /* ScriptingBridge.framework */,
 				3B91E4E01481E196002F5D7B /* Cocoa.framework */,
 				3B91E4E21481E196002F5D7B /* Other Frameworks */,
 			);
@@ -105,6 +116,7 @@
 		3B91E5021481E21C002F5D7B /* src */ = {
 			isa = PBXGroup;
 			children = (
+				3B91E5131481F239002F5D7B /* apps */,
 				3B91E5031481E21C002F5D7B /* base */,
 				3B91E5061481E21C002F5D7B /* BCAppDelegate.h */,
 				3B91E5071481E21C002F5D7B /* BCAppDelegate.m */,
@@ -123,6 +135,26 @@
 				3B91E5051481E21C002F5D7B /* prefix.pch */,
 			);
 			path = base;
+			sourceTree = "<group>";
+		};
+		3B91E5131481F239002F5D7B /* apps */ = {
+			isa = PBXGroup;
+			children = (
+				3B91E5141481F239002F5D7B /* chrome */,
+				3B91E5191481F2D6002F5D7B /* BCAppPlugin.h */,
+				3B91E51A1481F2D6002F5D7B /* BCAppPlugin.m */,
+			);
+			path = apps;
+			sourceTree = "<group>";
+		};
+		3B91E5141481F239002F5D7B /* chrome */ = {
+			isa = PBXGroup;
+			children = (
+				3B91E5181481F29A002F5D7B /* SBChrome.h */,
+				3B91E51C1481F4CE002F5D7B /* BCChromePlugin.h */,
+				3B91E51D1481F4CE002F5D7B /* BCChromePlugin.m */,
+			);
+			path = chrome;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,6 +223,8 @@
 				3B91E50C1481E21C002F5D7B /* BCAppDelegate.m in Sources */,
 				3B91E50F1481E2A8002F5D7B /* BCMonitor.m in Sources */,
 				3B91E5121481ED10002F5D7B /* BCMonitorEventStream.m in Sources */,
+				3B91E51B1481F2D6002F5D7B /* BCAppPlugin.m in Sources */,
+				3B91E51E1481F4CE002F5D7B /* BCChromePlugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

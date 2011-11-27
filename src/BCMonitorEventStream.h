@@ -1,13 +1,7 @@
-//
-//  BCMonitorEventStream.h
-//  Focus
-//
-//  Created by Brian Collins on 11-11-26.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
-//
+@interface BCMonitorEventStream : NSDocument {
+    NSMutableArray *events;
+}
 
-#import <AppKit/AppKit.h>
-
-@interface BCMonitorEventStream : NSDocument
+- (void)recordKeyCount:(NSInteger)keyCount application:(NSString *)bundleIdentifier metadata:(NSDictionary *)metadata;
 
 @end

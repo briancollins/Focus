@@ -1,5 +1,6 @@
 #import "BCMonitor.h"
 #import "BCMonitorEventStream.h"
+#import "BCAppPlugin.h"
 
 @interface BCMonitor ()
 - (void)eventReceived:(CGEventRef)event ofType:(CGEventType)type;
@@ -52,8 +53,6 @@ CGEventRef eventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef eve
     } else {
         isActive = NO;
     }
-
-    keystrokes[0] = 0;
     
     if (!self.eventStream) {
         self.eventStream = [[BCMonitorEventStream alloc] init];
@@ -67,7 +66,16 @@ CGEventRef eventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef eve
         }
     }
     
+    NSDictionary *metaData = nil;
     
+    if (activeApplication) {  
+        metaData = [[BCAppPlugin pluginForApplication:activeApplication.bundleIdentifier] metadata];
+    }
+    
+    [self.eventStream recordKeyCount:keystrokes[0] 
+                         application:activeApplication.bundleIdentifier
+                            metadata:metaData];
+    keystrokes[0] = 0;
 }
 
 - (void)eventReceived:(CGEventRef)event ofType:(CGEventType)type {
