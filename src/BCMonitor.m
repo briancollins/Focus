@@ -12,7 +12,7 @@ CGEventRef eventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef eve
 }
 
 @implementation BCMonitor
-@synthesize eventStream;
+@synthesize eventStream, keysPerSecond;
 
 - (id)init {
     if ((self = [super init])) {
@@ -43,6 +43,7 @@ CGEventRef eventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef eve
     }
     
     movingAverage /= kBCMonitorMovingAverageDataPoints;
+    self.keysPerSecond = movingAverage;
     
     for (NSInteger i = kBCMonitorMovingAverageDataPoints - 1; i >= 1; i--) {
         keystrokes[i] = keystrokes[i - 1];
@@ -52,6 +53,7 @@ CGEventRef eventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef eve
         isActive = YES;
     } else {
         isActive = NO;
+        return;
     }
     
     if (!self.eventStream) {
@@ -71,6 +73,7 @@ CGEventRef eventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef eve
     if (activeApplication) {  
         metaData = [[BCAppPlugin pluginForApplication:activeApplication.bundleIdentifier] metadata];
     }
+    
     
     [self.eventStream recordKeyCount:keystrokes[0] 
                          application:activeApplication.bundleIdentifier

@@ -1,6 +1,6 @@
 #define kBCMonitorInactivityTimeout       30.0f
 #define kBCMonitorUpdateInterval          1.0f
-#define kBCMonitorMovingAverageDataPoints 5
+#define kBCMonitorMovingAverageDataPoints 1
 @class BCMonitorEventStream;
 
 @interface BCMonitor : NSObject {
@@ -14,8 +14,8 @@
 }
 
 @property (nonatomic, strong) BCMonitorEventStream *eventStream;
+@property (nonatomic) float keysPerSecond;
 
 @end
 
 CGEventRef eventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef event, BCMonitor *monitor);
-

@@ -2,6 +2,7 @@
 #define X_OR_NULL(x) x ? x : [NSNull null]
 
 @implementation BCMonitorEventStream
+@synthesize keyStrokes;
 
 - (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError **)outError {
     return YES;
@@ -22,6 +23,7 @@
 }
 
 - (void)recordKeyCount:(NSInteger)keyCount application:(NSString *)bundleIdentifier metadata:(NSDictionary *)metadata {
+    self.keyStrokes += keyCount;
     [events addObject:
      [NSDictionary dictionaryWithObjectsAndKeys:
       X_OR_NULL([NSNumber numberWithInteger:keyCount]), @"keyCount",
