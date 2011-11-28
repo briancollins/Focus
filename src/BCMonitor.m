@@ -16,8 +16,9 @@
             keystrokes[i] = 0;
         }
         
-        NSEventMask mask = NSFlagsChangedMask | NSKeyDownMask | NSMouseMovedMask | NSLeftMouseDownMask;
-        
+        NSEventMask mask = NSFlagsChangedMask | NSKeyDownMask | NSMouseMovedMask | NSLeftMouseDownMask | NSScrollWheel;
+
+        eventMonitor =
         [NSEvent addGlobalMonitorForEventsMatchingMask:mask  handler:^(NSEvent *event){
             lastActive = [NSDate date];
 
@@ -85,6 +86,7 @@
 
 - (void)dealloc {
     [timer invalidate], timer = nil;
+    [NSEvent removeMonitor:eventMonitor], eventMonitor = nil;
 }
 
 

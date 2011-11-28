@@ -10,6 +10,7 @@
     BOOL isActive;
     BCMonitorEventStream *eventStream;
     NSUInteger modifierFlags;
+    id eventMonitor;
 }
 
 @property (nonatomic) float keysPerSecond;
