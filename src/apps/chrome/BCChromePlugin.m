@@ -19,7 +19,8 @@
         }
     }
     
-    if (front && front.activeTab.URL) {
+    NSString *URL = front.activeTab.URL;
+    if (URL) {
         return [NSDictionary dictionaryWithObject:front.activeTab.URL forKey:@"URL"];
     }
     
