@@ -1,10 +1,9 @@
 #define kBCMonitorInactivityTimeout       30.0f
 #define kBCMonitorUpdateInterval          1.0f
-#define kBCMonitorMovingAverageDataPoints 1
 @class BCMonitorEventStream;
 
 @interface BCMonitor : NSObject {    
-    NSInteger keystrokes[kBCMonitorMovingAverageDataPoints];
+    NSInteger keystrokes;
     NSDate *lastActive;
     NSTimer *timer;
     BOOL isActive;

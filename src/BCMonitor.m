@@ -12,10 +12,7 @@
 
 - (id)init {
     if ((self = [super init])) {
-        for (NSInteger i = 0; i < kBCMonitorMovingAverageDataPoints; i++) {
-            keystrokes[i] = 0;
-        }
-        
+        keystrokes = 0;
         NSEventMask mask = NSFlagsChangedMask | NSKeyDownMask | NSMouseMovedMask | NSLeftMouseDownMask | NSScrollWheel;
 
         eventMonitor =
@@ -23,10 +20,10 @@
             lastActive = [NSDate date];
 
             if (event.type == NSKeyDown) {
-                keystrokes[0] ++;
+                keystrokes ++;
             } else if (event.type == NSFlagsChanged) {
                 if (event.modifierFlags > modifierFlags) {
-                    keystrokes[0] ++;
+                    keystrokes ++;
                 }
                 
                 modifierFlags = event.modifierFlags;
@@ -40,18 +37,8 @@
 }
 
 - (void)updateStats {
-    float movingAverage = 0.0f;
-    
-    for (NSInteger i = 0; i < kBCMonitorMovingAverageDataPoints; i++) {
-        movingAverage += keystrokes[i];
-    }
-    
-    movingAverage /= kBCMonitorMovingAverageDataPoints;
-    self.keysPerSecond = movingAverage;
-    
-    for (NSInteger i = kBCMonitorMovingAverageDataPoints - 1; i >= 1; i--) {
-        keystrokes[i] = keystrokes[i - 1];
-    }
+
+    self.keysPerSecond = keystrokes;
     
     if (lastActive && [[NSDate date] timeIntervalSinceDate:lastActive] < kBCMonitorInactivityTimeout) {
         isActive = YES;
@@ -74,12 +61,12 @@
         metaData = [[BCAppPlugin pluginForApplication:activeApplication.bundleIdentifier] metadata];
     }
     
-    self.totalKeystrokes += keystrokes[0];
+    self.totalKeystrokes += keystrokes;
     [self.eventStream
-     recordKeyCount:keystrokes[0] 
+     recordKeyCount:keystrokes
      application:activeApplication
      metadata:metaData];
-    keystrokes[0] = 0;
+    keystrokes = 0;
 }
 
 
