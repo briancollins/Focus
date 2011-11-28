@@ -21,7 +21,7 @@
     
     NSString *URL = front.activeTab.URL;
     if (URL) {
-        return [NSDictionary dictionaryWithObject:front.activeTab.URL forKey:@"URL"];
+        return [NSDictionary dictionaryWithObject:URL forKey:@"URL"];
     }
     
     return nil;
