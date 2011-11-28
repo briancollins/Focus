@@ -3,16 +3,9 @@
 #import "BCAppPlugin.h"
 
 @interface BCMonitor ()
-- (void)eventReceived:(CGEventRef)event ofType:(CGEventType)type;
-
 @property (nonatomic, strong) NSString *currentPath;
 @property (readonly) BCMonitorEventStream *eventStream;
 @end
-
-CGEventRef eventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef event, BCMonitor *monitor) {
-    [monitor eventReceived:event ofType:type];
-    return event;
-}
 
 @implementation BCMonitor
 @synthesize keysPerSecond, totalKeystrokes, currentPath;
@@ -23,14 +16,21 @@ CGEventRef eventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef eve
             keystrokes[i] = 0;
         }
         
-        CGEventMask mask = CGEventMaskBit(kCGEventKeyDown) | CGEventMaskBit(kCGEventMouseMoved) | CGEventMaskBit(kCGEventLeftMouseDown) | CGEventMaskBit(kCGEventRightMouseDown);
+        NSEventMask mask = NSFlagsChangedMask | NSKeyDownMask | NSMouseMovedMask | NSLeftMouseDownMask;
         
-        tap = CGEventTapCreate(kCGHIDEventTap, kCGTailAppendEventTap, kCGEventTapOptionListenOnly,
-                               mask, (CGEventTapCallBack)eventCallback, (__bridge void *)self);
-        
-        runLoopSource = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, tap, 0);
-        CFRunLoopAddSource(CFRunLoopGetCurrent(), runLoopSource, kCFRunLoopCommonModes);
-        CGEventTapEnable(tap, YES);
+        [NSEvent addGlobalMonitorForEventsMatchingMask:mask  handler:^(NSEvent *event){
+            lastActive = [NSDate date];
+
+            if (event.type == NSKeyDown) {
+                keystrokes[0] ++;
+            } else if (event.type == NSFlagsChanged) {
+                if (event.modifierFlags > modifierFlags) {
+                    keystrokes[0] ++;
+                }
+                
+                modifierFlags = event.modifierFlags;
+            }
+        }];
         
         timer = [NSTimer scheduledTimerWithTimeInterval:kBCMonitorUpdateInterval target:self selector:@selector(updateStats) userInfo:nil repeats:YES];
     }
@@ -81,20 +81,10 @@ CGEventRef eventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef eve
     keystrokes[0] = 0;
 }
 
-- (void)eventReceived:(CGEventRef)event ofType:(CGEventType)type {
-    lastActive = [NSDate date];
-    
-    if (type == kCGEventKeyDown) {
-        keystrokes[0] ++;
-    }
-}
+
 
 - (void)dealloc {
     [timer invalidate], timer = nil;
-    CGEventTapEnable(tap, NO);
-    CFRunLoopRemoveSource(CFRunLoopGetCurrent(), runLoopSource, kCFRunLoopCommonModes);
-    CFRelease(runLoopSource), runLoopSource = NULL;
-    CFRelease(tap), tap = NULL;
 }
 
 

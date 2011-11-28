@@ -3,15 +3,13 @@
 #define kBCMonitorMovingAverageDataPoints 1
 @class BCMonitorEventStream;
 
-@interface BCMonitor : NSObject {
-    CFMachPortRef tap;
-    CFRunLoopSourceRef runLoopSource;
-    
+@interface BCMonitor : NSObject {    
     NSInteger keystrokes[kBCMonitorMovingAverageDataPoints];
     NSDate *lastActive;
     NSTimer *timer;
     BOOL isActive;
     BCMonitorEventStream *eventStream;
+    NSUInteger modifierFlags;
 }
 
 @property (nonatomic) float keysPerSecond;
@@ -20,5 +18,3 @@
 - (void)saveEventStream;
 
 @end
-
-CGEventRef eventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef event, BCMonitor *monitor);
