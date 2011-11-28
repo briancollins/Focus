@@ -108,7 +108,7 @@ CGEventRef eventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef eve
     }
     NSDate *today = date;
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"MM-dd-yyyy hh.00.00"];    
+    [dateFormat setDateFormat:@"yyyy-MM-dd HH.00"];    
     NSString *fileName = [NSString stringWithFormat:@"%@.FocusEvents", [dateFormat stringFromDate:today]];
     return [folder stringByAppendingPathComponent:fileName];
 }
