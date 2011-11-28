@@ -29,7 +29,7 @@
                 modifierFlags = event.modifierFlags;
             }
         }];
-        
+
         timer = [NSTimer scheduledTimerWithTimeInterval:kBCMonitorUpdateInterval target:self selector:@selector(updateStats) userInfo:nil repeats:YES];
     }
     
@@ -40,10 +40,7 @@
 
     self.keysPerSecond = keystrokes;
     
-    if (lastActive && [[NSDate date] timeIntervalSinceDate:lastActive] < kBCMonitorInactivityTimeout) {
-        isActive = YES;
-    } else {
-        isActive = NO;
+    if (lastActive && [[NSDate date] timeIntervalSinceDate:lastActive] > kBCMonitorInactivityTimeout) {
         return;
     }
     

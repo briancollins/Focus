@@ -6,7 +6,6 @@
     NSInteger keystrokes;
     NSDate *lastActive;
     NSTimer *timer;
-    BOOL isActive;
     BCMonitorEventStream *eventStream;
     NSUInteger modifierFlags;
     id eventMonitor;
