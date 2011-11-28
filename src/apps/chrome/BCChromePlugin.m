@@ -19,7 +19,7 @@
         }
     }
     
-    if (front) {
+    if (front && front.activeTab.URL) {
         return [NSDictionary dictionaryWithObject:front.activeTab.URL forKey:@"URL"];
     }
     
