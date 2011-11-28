@@ -81,7 +81,7 @@
 - (void)updateStatusItem {
     statusItem.image = [self statusImageWithColor:[NSColor blackColor] fillColor:[NSColor grayColor]];
     statusItem.alternateImage = [self statusImageWithColor:[NSColor whiteColor] fillColor:[NSColor whiteColor]];
-    self.keyCountMenuItem.title = [NSString stringWithFormat:@"%d keys pressed", self.monitor.totalKeystrokes];
+    self.keyCountMenuItem.title = [NSString stringWithFormat:@"%d Keys Pressed", self.monitor.totalKeystrokes];
 }
 
 - (void)dealloc {
