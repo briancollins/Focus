@@ -19,7 +19,7 @@
         [NSEvent addGlobalMonitorForEventsMatchingMask:mask  handler:^(NSEvent *event){
             lastActive = [NSDate date];
 
-            if (event.type == NSKeyDown) {
+            if (event.type == NSKeyDown && !event.isARepeat) {
                 keystrokes ++;
             } else if (event.type == NSFlagsChanged) {
                 if (event.modifierFlags > modifierFlags) {
